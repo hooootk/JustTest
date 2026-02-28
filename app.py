@@ -2,6 +2,10 @@ from transformers import pipeline
 from PIL import Image
 import streamlit as st
 
+def predictimage(name):
+  return Image.open(name).convert("RGB")
+
+
 # Streamlit UI
 st.header("Title: Age Classification using ViT")
 
@@ -12,11 +16,8 @@ age_classifier =pipeline("image-classification",
 
 
 
-image_name = "middleagedMan.jpg"
-image_name = Image.open(image_name).convert("RGB")
-
 # Classify age
-age_predictions = age_classifier(image_name)
+age_predictions = age_classifier(openimage("middleagedMan.jpg"))
 st.write(age_predictions)
 age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
 
