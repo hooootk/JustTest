@@ -2,7 +2,7 @@ from transformers import pipeline
 from PIL import Image
 import streamlit as st
 
-def predictimage(name):
+def openimage(name):
   return Image.open(name).convert("RGB")
 
 
